@@ -1,8 +1,11 @@
 class Solution:
     def numIdenticalPairs(self, nums: List[int]) -> int:
-        count = 0        
-        for i in range(len(nums)-1):
-            for j in range(i+1, len(nums)):
-                if nums[i] == nums[j]:
-                    count += 1
+        freq = {}
+        count = 0
+        for num in nums:
+            if num in freq:
+                count += freq[num]
+                freq[num] += 1
+            else:
+                freq[num] = 1
         return count
